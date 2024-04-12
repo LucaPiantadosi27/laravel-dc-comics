@@ -15,7 +15,7 @@
     {{-- @dump($comics) --}}
 
 
-    <table class="table">
+    <table class="table mb-5">
 
         <thead>
 
@@ -42,7 +42,7 @@
 
                 <td>{{ $comic->artists }}</td>
 
-                <td><a href="" class="btn btn-primary " >Visualizza</a></td>
+                <td><a href="[{route('comics.show', comic->id)}]" class="btn btn-primary " >Visualizza</a></td>
 
             </tr>
 
@@ -54,6 +54,7 @@
         </tbody>
 
       </table>
+      <a href="{{route('comics.create')}}" class="btn btn-primary">Aggiungi un fumetto</a>
 
 </div>
 
