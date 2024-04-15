@@ -48,7 +48,7 @@
             <input type="text" class="form-control" name="writers" id="writers" aria-describedby="emailHelp"  value="{{$comic->writers}}">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 
 </div>

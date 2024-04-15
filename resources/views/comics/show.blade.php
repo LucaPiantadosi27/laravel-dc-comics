@@ -56,10 +56,10 @@
     </div>
 
 
-    <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i> Edit</a>
+    <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i> Modifica</a>
     <form action="{{route('comics.destroy', $comic->id)}}" method="POST">@csrf @method('DELETE')
 
-        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+        <button class="btn btn-danger mt-2 "><i class="fa-solid fa-trash"></i> Cancella</button>
     
     </form>
 </div>
