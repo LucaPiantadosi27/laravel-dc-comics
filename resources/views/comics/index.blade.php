@@ -23,6 +23,12 @@
                 <td>{{ $comic->artists }}</td>
                 <td><a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary " >Visualizza</a></td>
             </tr>
+
+            <td>
+              <a class="btn btn-info" href="{{route('comics.show', $comics->id)}}">Visualizza</a>
+            </td>
+
+
             @endforeach
 
         </tbody>
