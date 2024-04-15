@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container py-5">
+<div class="container py-5 p-5 mt-2  mb-2  bg-body-tertiary rounded-5 ">
     <h1 class="mb-5">{{$comic->title}}</h1>
 
     {{-- @dump($comic) --}}
@@ -57,7 +57,11 @@
 
 
     <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i> Edit</a>
+    <form action="{{route('comics.destroy', $comic->id)}}" method="POST">@csrf @method('DELETE')
 
+        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+    
+    </form>
 </div>
 
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container py-5 p-5 mt-2  mb-2  bg-body-tertiary rounded-5 ">
 
 
     <form action="{{route('comics.store')}}" method="POST">
