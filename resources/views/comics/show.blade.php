@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -56,7 +56,7 @@
     </div>
 
 
-
+    <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i> Edit</a>
 
 </div>
 
