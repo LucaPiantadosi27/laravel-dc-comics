@@ -2,12 +2,12 @@
 
 @section('content')
     
-<div class="container p-5 mt-2  mb-2  bg-body-tertiary rounded-5  ">
+<div class="container p-5 mt-2  mb-2 rounded-5  ">
     <h1>Fumetti</h1>
 
     {{-- @dump($comics) --}}
 
-    <table class="table mb-5  bg-gradient">
+    <table class="table mb-5  ">
         <thead>
           <tr>
             <th scope="col">Nome</th>
@@ -25,7 +25,7 @@
             </tr>
 
             <td>
-              <a class="btn btn-info" href="{{route('comics.show', $comics->id)}}">Visualizza</a>
+              {{-- <a class="btn btn-info" href="{{route('comics.show', $comics->id)}}">Visualizza</a> --}}
             </td>
 
 

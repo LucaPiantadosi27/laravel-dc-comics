@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use function PHPSTORM_META\map;
 
 class ComicController extends Controller
 {
@@ -31,18 +33,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'thumb' => 'required|url',
-            'price' => 'required|numeric',
-            'series' => 'required|string|max:255',
-            'sale_date' => 'required|date',
-            'type' => 'required|string|max:100',
-            'artists' => 'nullable|string',
-            'writers' => 'nullable|string',
-        ]);
+        $this->validation($request->all());
 
         $newComic = new Comic();
 
@@ -123,5 +114,51 @@ class ComicController extends Controller
 
         return redirect()->route('comics.index');
     }
-}
 
+
+
+    // Validation
+    public function validation($data) {
+
+
+    $validator = Validator::make($data,[
+        'title' => 'required|string|max:255',
+        'description' => 'required|max:5000',
+        'thumb' => 'required|max:5000',
+        'price' => 'required|numeric',
+        'series' => 'required|string|max:255',
+        'sale_date' => 'required|date',
+        'type' => 'required|string|max:100',
+        'artists' => 'nullable|string',
+        'writers' => 'nullable|string',
+    ],
+    [
+        'title.required' => "Devi inserire un titolo",
+        'title.max' => "Il titolo può avere massimo :max caratteri",
+        'description.required' => 'Devi inserire una descrizione',
+
+        'max' => 'Il campo :attribute deve avere massimo :max caratteri',
+        'required' => ':attribute deve essere compilato',
+
+        'price.required' => 'Devi inserire un prezzo per il fumetto.',
+        'price.numeric' => 'Il prezzo deve essere un valore numerico.',
+
+        'sale_date.required' => 'Devi inserire la data di vendita del fumetto.',
+        'sale_date.date' => 'Il formato della data di vendita non è valido.',
+        
+        'type.required' => 'Devi specificare il tipo di fumetto.',
+
+    ],[
+        'title' => 'titolo',
+        'description' => 'descrizione',
+        'thumb' => 'immagine',
+        'price' => 'prezzo',
+        'series' => 'serie',
+        'sale_date' => 'data di pubblicazione',
+        'type' => 'tipologia',
+        'artists' => 'artisti',
+        'writers' => 'scrittori',
+    ])->validate();
+    }
+
+}
