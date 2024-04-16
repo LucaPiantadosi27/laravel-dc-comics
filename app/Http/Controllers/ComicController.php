@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,9 +32,11 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $this->validation($request->all());
+        // $this->validation($request->all());
+        $request->validated();
+
 
         $newComic = new Comic();
 
@@ -84,8 +87,11 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
-    {
+    public function update(StoreComicRequest $request, Comic $comic)
+    {   
+        $request->validated();
+
+
         $this->validation($request->all());
         // codice per modificare la riga del database
 
@@ -115,50 +121,50 @@ class ComicController extends Controller
         return redirect()->route('comics.index');
     }
 
-
+}
 
     // Validation
-    public function validation($data) {
+    // public function validation($data) {
 
 
-    $validator = Validator::make($data,[
-        'title' => 'required|string|max:255',
-        'description' => 'required|max:5000',
-        'thumb' => 'required|max:5000',
-        'price' => 'required|numeric',
-        'series' => 'required|string|max:255',
-        'sale_date' => 'required|date',
-        'type' => 'required|string|max:100',
-        'artists' => 'nullable|string',
-        'writers' => 'nullable|string',
-    ],
-    [
-        'title.required' => "Devi inserire un titolo",
-        'title.max' => "Il titolo può avere massimo :max caratteri",
-        'description.required' => 'Devi inserire una descrizione',
+    // $validator = Validator::make($data,[
+    //     'title' => 'required|string|max:255',
+    //     'description' => 'required|max:5000',
+    //     'thumb' => 'required|max:5000',
+    //     'price' => 'required|numeric',
+    //     'series' => 'required|string|max:255',
+    //     'sale_date' => 'required|date',
+    //     'type' => 'required|string|max:100',
+    //     'artists' => 'nullable|string',
+    //     'writers' => 'nullable|string',
+    // ],
+    // [
+    //     'title.required' => "Devi inserire un titolo",
+    //     'title.max' => "Il titolo può avere massimo :max caratteri",
+    //     'description.required' => 'Devi inserire una descrizione',
 
-        'max' => 'Il campo :attribute deve avere massimo :max caratteri',
-        'required' => ':attribute deve essere compilato',
+    //     'max' => 'Il campo :attribute deve avere massimo :max caratteri',
+    //     'required' => ':attribute deve essere compilato',
 
-        'price.required' => 'Devi inserire un prezzo per il fumetto.',
-        'price.numeric' => 'Il prezzo deve essere un valore numerico.',
+    //     'price.required' => 'Devi inserire un prezzo per il fumetto.',
+    //     'price.numeric' => 'Il prezzo deve essere un valore numerico.',
 
-        'sale_date.required' => 'Devi inserire la data di vendita del fumetto.',
-        'sale_date.date' => 'Il formato della data di vendita non è valido.',
+    //     'sale_date.required' => 'Devi inserire la data di vendita del fumetto.',
+    //     'sale_date.date' => 'Il formato della data di vendita non è valido.',
 
-        'type.required' => 'Devi specificare il tipo di fumetto.',
+    //     'type.required' => 'Devi specificare il tipo di fumetto.',
 
-    ],[
-        'title' => 'titolo',
-        'description' => 'descrizione',
-        'thumb' => 'immagine',
-        'price' => 'prezzo',
-        'series' => 'serie',
-        'sale_date' => 'data di pubblicazione',
-        'type' => 'tipologia',
-        'artists' => 'artisti',
-        'writers' => 'scrittori',
-    ])->validate();
-    }
+    // ],[
+    //     'title' => 'titolo',
+    //     'description' => 'descrizione',
+    //     'thumb' => 'immagine',
+    //     'price' => 'prezzo',
+    //     'series' => 'serie',
+    //     'sale_date' => 'data di pubblicazione',
+    //     'type' => 'tipologia',
+    //     'artists' => 'artisti',
+    //     'writers' => 'scrittori',
+    // ])->validate();
+    // }
 
-}
+
