@@ -40,15 +40,21 @@ class ComicController extends Controller
 
         $newComic = new Comic();
 
-        $newComic->title = $request->title;
-        $newComic->description = $request->description;
-        $newComic->thumb = $request->thumb;
-        $newComic->price = $request->price;
-        $newComic->series = $request->series;
-        $newComic->sale_date = $request->sale_date;
-        $newComic->type = $request->type;
-        $newComic->artists = $request->artists;
-        $newComic->writers = $request->writers;
+        
+
+        // $newComic->title = $request->title;
+        // $newComic->description = $request->description;
+        // $newComic->thumb = $request->thumb;
+        // $newComic->price = $request->price;
+        // $newComic->series = $request->series;
+        // $newComic->sale_date = $request->sale_date;
+        // $newComic->type = $request->type;
+        // $newComic->artists = $request->artists;
+        // $newComic->writers = $request->writers;
+
+        // Fill
+        $newComic->fill($request->all());
+
 
         $newComic->save();
 
@@ -95,16 +101,18 @@ class ComicController extends Controller
         $this->validation($request->all());
         // codice per modificare la riga del database
 
+        // Fill
+        $Comic->update($request->all());
 
-        $comic->title = $request->title;
-        $comic->description = $request->description;
-        $comic->thumb = $request->thumb;
-        $comic->price = $request->price;
-        $comic->series = $request->series;
-        $comic->sale_date = $request->sale_date;
-        $comic->type = $request->type;
-        $comic->artists = $request->artists;
-        $comic->writers = $request->writers;
+        // $comic->title = $request->title;
+        // $comic->description = $request->description;
+        // $comic->thumb = $request->thumb;
+        // $comic->price = $request->price;
+        // $comic->series = $request->series;
+        // $comic->sale_date = $request->sale_date;
+        // $comic->type = $request->type;
+        // $comic->artists = $request->artists;
+        // $comic->writers = $request->writers;
 
         $comic->save();
 
