@@ -2,9 +2,10 @@
 
 @section('content')
 
-<div class="container py-5 p-5 mt-2  mb-2  bg-body-tertiary rounded-5 ">
-    <h1 class="mb-5">{{$comic->title}}</h1>
-
+<div class="container py-5 p-5 mt-2  mb-2 bg-body-tertiary rounded-5 pl">
+    <div class=" bg-gradient  rounded-3 pb-1 ">
+        <h1 class="mb-5">{{$comic->title}}</h1>
+    </div>
     {{-- @dump($comic) --}}
 
     <div class="row">

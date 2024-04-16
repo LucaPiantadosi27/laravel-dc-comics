@@ -86,7 +86,7 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-
+        $this->validation($request->all());
         // codice per modificare la riga del database
 
 
@@ -145,7 +145,7 @@ class ComicController extends Controller
 
         'sale_date.required' => 'Devi inserire la data di vendita del fumetto.',
         'sale_date.date' => 'Il formato della data di vendita non è valido.',
-        
+
         'type.required' => 'Devi specificare il tipo di fumetto.',
 
     ],[

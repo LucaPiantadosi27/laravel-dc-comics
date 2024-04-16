@@ -2,9 +2,10 @@
 
 @section('content')
     
-<div class="container p-5 mt-2  mb-2 rounded-5  ">
-    <h1>Fumetti</h1>
-
+<div class="container py-5 p-5 mt-2  mb-2 bg-body-tertiary rounded-5 ">
+   <div class=" bg-gradient  rounded-3 ">
+    <h1>Lista Fumetti</h1>
+  </div> 
     {{-- @dump($comics) --}}
 
     <table class="table mb-5  ">
@@ -24,10 +25,7 @@
                 <td><a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary " >Visualizza</a></td>
             </tr>
 
-            <td>
-              {{-- <a class="btn btn-info" href="{{route('comics.show', $comics->id)}}">Visualizza</a> --}}
-            </td>
-
+            
 
             @endforeach
 
