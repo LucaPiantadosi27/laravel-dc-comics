@@ -176,3 +176,10 @@ class ComicController extends Controller
     // }
 
 
+    class homeController extends Controller
+{
+    public function index()
+    {
+        return view('home');
+    }
+}
